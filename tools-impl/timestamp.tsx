@@ -65,7 +65,8 @@ function ResultDisplay({
 }
 
 export default function TimestampTool() {
-  const [now, setNow] = useState<number>(Date.now());
+  const [now, setNow] = useState<number>(0);
+  const [mounted, setMounted] = useState(false);
   const [timestampInput, setTimestampInput] = useState("");
   const [dateInput, setDateInput] = useState("");
   const [tsResult, setTsResult] = useState<ConversionResult | null>(null);
@@ -74,8 +75,10 @@ export default function TimestampTool() {
   const [dateError, setDateError] = useState("");
   const [copied, setCopied] = useState(false);
 
-  // Live clock
+  // Live clock - initialize on mount to avoid hydration mismatch
   useEffect(() => {
+    setNow(Date.now());
+    setMounted(true);
     const interval = setInterval(() => {
       setNow(Date.now());
     }, 1000);
@@ -149,7 +152,7 @@ export default function TimestampTool() {
       <div className="rounded-lg border border-accent/30 bg-accent/5 p-6 text-center">
         <div className="flex items-center justify-center gap-3">
           <span className="font-mono text-3xl font-bold text-accent">
-            {currentUnix}
+            {mounted ? currentUnix : "\u00A0"}
           </span>
           <button
             onClick={handleCopyLive}
@@ -163,7 +166,9 @@ export default function TimestampTool() {
             )}
           </button>
         </div>
-        <p className="mt-2 font-mono text-sm text-gray-400">{currentIso}</p>
+        <p className="mt-2 font-mono text-sm text-gray-400">
+          {mounted ? currentIso : "\u00A0"}
+        </p>
       </div>
 
       {/* Converter sections */}
