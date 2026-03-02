@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     description:
       "Free online developer tools: JSON formatter, Base64 encoder, regex tester, color converter, and more. All tools run in your browser.",
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
 };
 
 export default function RootLayout({
