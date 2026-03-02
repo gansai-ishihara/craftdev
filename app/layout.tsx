@@ -49,7 +49,7 @@ export default function RootLayout({
               Craft<span className="text-accent">Dev</span>.tools
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/gansai-ishihara/craftdev"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-gray-400 hover:text-white transition-colors"

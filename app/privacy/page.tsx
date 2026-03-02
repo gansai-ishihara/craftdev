@@ -73,7 +73,7 @@ export default function PrivacyPage() {
           If you have any questions about this privacy policy, please open an
           issue on our{" "}
           <a
-            href="https://github.com"
+            href="https://github.com/gansai-ishihara/craftdev"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:underline"
